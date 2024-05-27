@@ -5,16 +5,17 @@ n = int(input().strip())
 m = int(input().strip())
 s = input().strip()
 
-txt = "I" + ("OI" * n)
-cnt = 0
-idx = 0
+idx, cnt, result = 0, 0, 0
 
-while(1):
-  idx = s.find(txt)
-  if idx != -1:
-    cnt += 1
-    s = s[idx+2:]
-  else:
-    break
-    
-print(cnt)
+while idx < (m - 1):
+    if s[idx:idx + 3] == 'IOI': # 3칸
+        cnt += 1
+        idx += 2
+        if cnt == n:
+            result += 1
+            cnt -= 1
+    else:
+        idx += 1
+        cnt = 0
+
+print(result)
